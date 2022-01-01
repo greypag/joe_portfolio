@@ -1,9 +1,8 @@
-{::options parse_block_html="true" /} 
-
 # Joe Kwan Portfolio
 Some work from Master of Data Science 
 
 <details>
+  
   <summary>Click to expand!</summary>
   
   ## Heading
