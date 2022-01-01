@@ -7,6 +7,7 @@ Some work from Master of Data Science
 To analysis Airbnb data from 2019 to 2020, find out the factors that affect the price and the booking. Also generate a prediction model to suggest what facility and which location can help boost up the price and booking enquiries.
 
 <details>
+  
   <summary>Click for more detail</summary>
 
 ## Task
