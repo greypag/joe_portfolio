@@ -3,9 +3,10 @@ Some work from Master of Data Science
 
 
 <details>
-<summary>some summary</summary>
+<summary>some summary
+  </summary>
 
-A list
+## A list
 - Another list item
 - <details><summary>some summary</summary>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est tellus, convallis eget vulputate ut, eleifend vel mauris. Maecenas consequat aliquam tortor quis bibendum</details>
 - Another list item
