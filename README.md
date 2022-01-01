@@ -1,17 +1,6 @@
 # Joe Kwan Portfolio
 Some work from Master of Data Science 
 
-<details>
-  
-  <summary>Click to expand!</summary>
-  
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
-
 # [Project 1 - AirBnb Data Analysis](AirBnb Data Analysis Project.pdf)
 
 ## Overview
