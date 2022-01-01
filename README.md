@@ -66,7 +66,7 @@ At the end my selection and decision of using Beauyson network brings a HD to th
 
 ## Code
 - [R - Bayesian Network Analysis.Rmd](code/R - Bayesian Network Analysis.Rmd)
-- [Python - image_analysis.py](Python - image_analysis.py)
-- [Python - calculate_similarity.py](Python - calculate_similarity.py)
+- [Python - image_analysis.py](code/Python - image_analysis.py)
+- [Python - calculate_similarity.py](code/Python - calculate_similarity.py)
   
 </details>
