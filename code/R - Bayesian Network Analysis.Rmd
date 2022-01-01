@@ -1,0 +1,337 @@
+---
+title: "Capstone Professional Project – Bayesian networks "
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(bnlearn)
+require(pcalg)
+require(e1071)
+require(caret)
+require(gRain)
+require(ggplot2)
+
+rm(list=ls())
+
+setwd("D:/unisa/Last_Sem/Monday_Project/data")
+file = "D:/unisa/Last_Sem/Monday_Project/data/@creative_test_data_ready_to_train.csv"
+data = read.delim(file, header = TRUE, sep = ",", dec = ".")
+data = na.omit(data)
+
+org_file = "D:/unisa/Last_Sem/Monday_Project/data/@org_creative_test_only_data.csv"
+org_data = read.delim(org_file, header = TRUE, sep = ",", dec = ".", fileEncoding="UTF-8-BOM")
+org_data = as.data.frame(org_data)
+
+```
+
+## Bayesian networks
+1. Summary of Data
+
+```{r}
+head(org_data,1 )
+```
+
+
+```{r}
+
+ggplot(org_data, aes(x=org_data$ï..image))+
+  labs(title="Number of Iamges record", 
+         x="Images", y = "Count")+
+  geom_bar(stat="count", width=0.7, fill="steelblue")+
+  theme_minimal()
+
+```
+
+```{r}
+
+ggplot(org_data, aes(x=JudgesBin))+
+  labs(title="Creativity Levels of all records", 
+         x="Creativity Levels", y = "Count")+
+  geom_bar(stat="count", width=0.7, fill="steelblue")+
+  theme_minimal()
+
+```
+
+Before working on the data, client gave us 4 data file which related to 4 images, so we compress them to single one.
+In total, there are 1416 rows of data and only 3 fields: Image, Text Response and JdugesBin(which is the creativity level). The data includes 4 images, there are less data for the image elephant. From the graph above, the number in different creativity levels only has slight difference. There are slightly over one third of text response are classified as low creativity(1). Nearly 400 text classified as middle(2) and around 450 rows is in high creativity level(3). Even the data now look like normal distributed, but since we have really small set of data, the distribution could be skew to low or high level when data increase.
+
+
+2. Process data
+
+After have a small look of the data, we need to extract and build features in order to create the Bayesian networks. So we first need to get information from the image. We use Google Vision to analysis image and fetch different details. We capture Face recognition labels, Related Text, Label, Logo, Related Object, Related Web Entity from Google Vision's analysis results. However, the results from Google vision are not always good enough, so we also use NLP to get synonym or even antonym as well. For example, if Google Vision recognize in the image there are several related keywords: Car, Women, Happy. Then our NLP method will also get synonym like: vehicle, automobile, and antonym such as: Men, Male, Angry....etc. This can increase the possibility to capture different writing style/pattern from text response. 
+
+Moreover, for Label, Related Text, Related Object, Related Web Entity: these data comes with a confidence percentage and I split data to 2 groups base on this percentage. For example, if Google Vision's analysis results has Labels: A(90%), B(40%), Label A is over 50% confidence level so it will go to High Related Label, and Label B which less than 50% will go under Low Related Label.
+
+```{r}
+keyword_file = "D:/unisa/Last_Sem/Monday_Project/data/@image_keyword.csv"
+keyword_data = read.delim(keyword_file, header = TRUE, sep = ",", dec = ".")
+keyword_data = as.data.frame(keyword_data)
+head(keyword_data, 1)
+```
+
+Next, we merge image analysis data with the orginal creativity data. 
+As our idea is to use similarity as feature to build Bayesian networks, so we calculate Jaccard similarity and Cosine similarity between text response with all results from Google Vision.
+
+```{r}
+sim_file = "D:/unisa/Last_Sem/Monday_Project/data/@creative_test_data_with_similarity_only.csv"
+sim_data = read.delim(sim_file, header = TRUE, sep = ",", dec = ".")
+sim_data = as.data.frame(sim_data)
+sim_data = na.omit(sim_data)
+head(sim_data, 1)
+```
+
+Moreover, to ensure the model works better we must have as much variable possible. Hence, we also added Word Count of text response, Stop Word count and Special character count in the data. Before training the model, now we extract 23 feautures between Text response and Image from the dataset.
+
+Features: 
+1. Word Count
+2. Stop Word Count (The, a, an, I.....etc)
+3. Special Character Count (@ ! # '........etc)
+4. Face recognition label Jaccard Similarity
+5. Face recognition label Cosine Similarity
+6. High Related Text Jaccard Similarity
+7. High Related Text Cosine Similarity
+8. Low Related Text Jaccard Similarity
+9. Low Related Text Cosine Similarity
+10. Image label Jaccard Similarity
+11. Image label Cosine Similarity
+12. Logo Jaccard Similarity
+13. Logo Cosine Similarity
+14. High Related Object Jaccard Similarity
+15. High Related Object Cosine Similarity
+16. Low Related Object Jaccard Similarity
+17. Low Related Object Cosine Similarity
+18. Best Guess Image label Jaccard Similarity
+19. Best Guess Image label Cosine Similarity
+20. High Related Web Entity Jaccard Similarity
+21. High Related Web Entity Cosine Similarity
+22. Low Related Web Entity Jaccard Similarity
+23. Low Related Web Entity Cosine Similarity
+24. Class
+
+
+3. Build network
+
+```{r , results='hide', message=FALSE, warning=FALSE}
+no_class_data = within(sim_data, rm(Text))
+no_class_data = within(no_class_data, rm(JudgesBin))
+no_class_data$class <- sim_data$JudgesBin
+ncol(no_class_data)
+n = nrow(no_class_data)
+label <- colnames(no_class_data)
+
+mylist <- list (1:ncol(no_class_data))
+label <- as.character(unlist(mylist))
+  
+pc.fit = pc(suffStat = list(C = cor(no_class_data), n=n)
+            ,indepTest = gaussCItest, 
+            ,alpha = 0.01, labels = label
+            , verbose = T)
+
+no_class_data = within(no_class_data, rm(class))
+
+```
+
+```{r}
+plot(pc.fit
+     , main = "Estimated DAG graph")
+```
+
+
+
+First, we use Bayesian network to learn the structure from data. In this graph, Bayesian network estimates and shows the cause/effect within parameters. We can see that most of features have some relationship between each other, which proves the feature that we extract would be provide predictive power to the network. There may be some parameters has no connection or effect to anything, but since our dataset is tiny, these parameters could show different result when the data size increase.
+
+
+```{r}
+no_class_data$class <- sim_data$JudgesBin
+model <- naiveBayes(class~., data = no_class_data)
+
+class(model) 
+pred <- predict(model,no_class_data)
+#table(pred,no_class_data$class)
+xtab <- table(pred, no_class_data$class)
+
+confusionMatrix(xtab)
+
+```
+Then we use NaiveBayes algorithm to build a model and test it's prediction accuracy. However, the overall accuracy is 35% and the main prediction falls into middle group generally. We have a theory that because the data is continuous data, so there is no baseline for the model to clearly identify the boundary between Low/Middle and Middle/High so it classify most record in the Middle group.
+
+
+
+
+```{r}
+no_class_data = within(no_class_data, rm(JudgesBin))
+no_class_data = within(no_class_data, rm(class))
+binary_data <- apply(no_class_data, 2, function(x) ifelse(x > mean(x), 2, ifelse(x == 0, 0, 1)))
+binary_data = as.data.frame(binary_data)
+
+head(binary_data, 1)
+```
+```{r, results='hide', message=FALSE, warning=FALSE}
+
+binary_data$class <- sim_data$JudgesBin
+n = nrow(binary_data)
+label <- colnames(binary_data)
+
+mylist <- list (1:ncol(binary_data))
+label <- as.character(unlist(mylist))
+  
+pc.fit = pc(suffStat = list(C = cor(binary_data), n=n)
+            ,indepTest = gaussCItest, 
+            ,alpha = 0.01, labels = label
+            , verbose = T)
+
+binary_data = within(binary_data, rm(class))
+
+```
+```{r}
+plot(pc.fit
+     , main = "Estimated DAG graph")
+```
+
+
+To improve the prediction accuracy and examine our theory, we convert our data to category data by average them out. For each parameter, we first find out the mean of every record, then we convert the value to 1 if the value smaller than mean, convert to 2 if greater. No conversion applied if the original value is 0. This conversion would allow Bayesian network has even better understanding of the data and the structure of the cause/effect from the data. As we plot the DAG again, it shows more like a hierarchy relation between each parameter.  
+
+
+```{r}
+
+binary_data[] <- lapply( binary_data, factor)
+binary_data$class <- sim_data$JudgesBin
+model <- naiveBayes(class~., data = binary_data)
+
+class(model) 
+pred <- predict(model,binary_data)
+#table(pred,no_class_data$class)
+xtab <- table(pred, binary_data$class)
+
+confusionMatrix(xtab)
+```
+Now the accuracy increased to 49.4% which is a huge improvement given the size of the data is tiny.
+However, even the sensitivity of Class 1(Low) is 81% and Class 3(High) is 45%, but the sensitivity for Class 2 dropped to 6%. This shows our data/feature is not capturing or reflecting all cases, so the model could not predict Class 2(correctly).
+
+
+```{r}
+final_file = "D:/unisa/Last_Sem/Monday_Project/data/@creative_test_data_ready_to_train.csv"
+final_file = read.delim(final_file, header = TRUE, sep = ",", dec = ".")
+final_file = na.omit(final_file)
+no_class_final_file = within(final_file, rm(JudgesBin))
+
+#a_final_file <- apply(final_file, 2, function(x) ifelse(x > mean(x), 1, 0))
+no_class_final_file <- apply(no_class_final_file, 2, function(x) ifelse(x > mean(x), 2, ifelse(x == 0, 0, 1)))
+
+final_file = as.data.frame(final_file)
+no_class_final_file = as.data.frame(no_class_final_file)
+
+```
+
+```{r}
+head(no_class_final_file, 1)
+```
+
+
+
+ We extend the features so the Bayesian network has more parameters to do the predictions.
+ We use NLP to do a deeper analysis on the text response, and try to get more features such as: Verb count, Nouns Count.....etc.
+ 
+ The updated feature listed below. 1-20 is the new feature that using NLP to extract from the text response. Each of the feature has further explaination in below link.
+ Ref: https://www.guru99.com/pos-tagging-chunking-nltk.html
+ 
+1. Coordinating conjunction count
+2. Cardinal digit count
+3. Determiner count
+4. existential there
+5. preposition
+6. adjective
+7. modal
+8. noun
+9. predeterminer
+10. possessive ending
+11. personal pronoun
+12. adverb
+13. particle
+14. infinite marker
+15. interjection
+16. verb
+17. wh-determiner
+18. wh-pronoun
+19. wh- adverb
+20. other
+21. Word Count
+22. Stop Word Count (The, a, an, I.....etc)
+23. Special Character Count (@ ! # '........etc)
+24. Face recognition label Jaccard Similarity
+25. Face recognition label Cosine Similarity
+26. High Related Text Jaccard Similarity
+27. High Related Text Cosine Similarity
+28. Low Related Text Jaccard Similarity
+29. Low Related Text Cosine Similarity
+30. Image label Jaccard Similarity
+31. Image label label Cosine Similarity
+32. Logo Jaccard Similarity
+33. Logo Cosine Similarity
+34. High Related Object Jaccard Similarity
+35. High Related Object Cosine Similarity
+36. Low Related Object Jaccard Similarity
+37. Low Related Object Cosine Similarity
+38. Best Guess Image label Jaccard Similarity
+39. Best Guess Image label Cosine Similarity
+40. High Related Web Entity Jaccard Similarity
+41. High Related Web Entity Cosine Similarity
+42. Low Related Web Entity Jaccard Similarity
+43. Low Related Web Entity Cosine Similarity
+44. Class
+ 
+```{r, results='hide', message=FALSE, warning=FALSE}
+
+no_class_final_file$class <- sim_data$JudgesBin
+ncol(no_class_final_file)
+n = nrow(no_class_final_file)
+label <- colnames(no_class_final_file)
+
+mylist <- list (1:ncol(no_class_final_file))
+label <- as.character(unlist(mylist))
+  
+pc.fit = pc(suffStat = list(C = cor(no_class_final_file), n=n)
+            ,indepTest = gaussCItest, 
+            ,alpha = 0.01, labels = label
+            , verbose = T)
+
+
+```
+
+```{r}
+plot(pc.fit
+     , main = "Updated Estimated DAG graph")
+```
+
+
+Now we have a updated DAG which shows more detailed relationship of each parameters. 
+As we can see on the above grahp, there are still some node seems has no relations or not connected to the main network. However, we believe that's because we don't have enough data for Bayesian networks to establish the connection. Hence, we will keep all node in the network so when data increase our model will still work without adjustment.
+ 
+ 
+ 
+```{r}
+no_class_final_file[] <- lapply( no_class_final_file, factor)
+no_class_final_file$class <- sim_data$JudgesBin
+
+binary_data = no_class_final_file
+
+model <- naiveBayes(class~., data = binary_data)
+
+class(model) 
+pred <- predict(model,binary_data)
+#table(pred,no_class_data$class)
+xtab <- table(pred, binary_data$class)
+
+confusionMatrix(xtab)
+
+
+```
+ 
+ At the final trail, our dataset increased to 44 features and we also convert the dataset to category data using average out method. From the result above we can see the accuracy improved to 55.3%, and P value shows this model covers most data which is really efficent. We can also see the Sensitivity for Class 2(middle) and Class 3(High) increased to 28.6% and 52.6%. Even Sensitivity for class 1 slightly drops to 75.1% but I think the result for the whole model is better than the previous one. 
+Our team thinks this result proves Bayesian networks's potential. For a such small dataset that doesn't have any obvious pattern, Bayesian networks still manage to have a good prediction accuracy. We think if the dataset increase, this model could perform even better.
+
+
+
