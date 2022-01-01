@@ -62,7 +62,7 @@ At the end my selection and decision of using Beauyson network brings a HD to th
 <img src="images/feat corr.png" alt="features" width="400"/>
 <img src="images/cloud_p2.png" alt="word cloud" width="400"/>
 <img src="images/dag.png" alt="dag" width="400"/>
-<img src="images/model_comparison.png" alt="model comparasion" width="400"/>
+<img src="images/model_comparison.png" alt="model comparasion" width="600"/>
 
 ## Code
 - [R - Bayesian Network Analysis.Rmd](code/R - Bayesian Network Analysis.Rmd)
