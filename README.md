@@ -21,11 +21,13 @@ Each of us involved all the K-mean clustering, Regression model, analysis and vi
 I only work a bit more on NLP/SVM.
 
 ## Preview
-![k-mean cluster](images/cluster.png){width=250px}
-![heatmap](images/map.png)
-![correlation matrix](images/corr.png)
-![nlp sentiment](images/sentiments.png)
-![word cloud](images/cloud.png)
-![svm](images/svm1.png)
-![svm](images/svm2.png)
-![svm](images/svm3.png)
+<img src="images/cluster.png" alt="k-mean cluster" width="400"/>
+<img src="images/map.png" alt="heatmap" width="400"/>
+<img src="images/corr.png" alt="correlation matrix" width="400"/>
+<img src="images/sentiments.png" alt="nlp sentiment" width="400"/>
+<img src="images/cloud.png" alt="word cloud" width="400"/>
+<img src="images/svm1.png" alt="svm" width="400"/>
+<img src="images/svm2.png" alt="svm" width="400"/>
+<img src="images/svm3.png" alt="svm" width="400"/>
+
+
