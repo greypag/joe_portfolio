@@ -4,22 +4,22 @@ Some work from Master of Data Science
 # [Project 1 - AirBnb Data Analysis](AirBnb Data Analysis Project.pdf)
 
 ## Overview
-To analysis Airbnb data from 2019 to 2020, find out the factors that affect the price and the booking. Also generate a prediction model to suggest what facility and which location can help boost up the price and booking enquiries.
+To analyze Airbnb data from 2019 to 2020, investigate which factors affect the price and the booking schedule. Also, generating a prediction model to suggest what facility and which location can help boost up the price and booking inquiries.
 
 <details>
   
   <summary>Click for more detail</summary>
 
 ## Task
-- Use R to do data cleaning and manipulation, clustering, and correlation test to isolate necessary feature
-- Use NLP and SVM to build regression model, to identify what feature affects the renting price and build a prediction model.
+- Use R to do data cleaning and manipulation, clustering, and correlation test to isolate necessary feature.
+- Use NLP and SVM to build a regression model, identify what feature affects the renting price, and build a prediction model.
 - Use Tableau and R markdown for reporting.
 
 ## Notes
-As the only one in the team has 10 years of coding experience, I handle a bit more coding than others than others.
+As the only one in the team who has 10 years of coding experience, I handle a bit more coding than others.
 The whole team design what features we need for analysis/prediction, and I help with coding. 
-Each of us involved all the K-mean clustering, Regression model, analysis and visualization. 
-I only work a bit more on NLP/SVM.
+Each of us involved all the K-mean clustering, Regression model, analysis, and visualization. 
+I work a bit more on NLP/SVM.
 
 ## Preview
 <img src="images/cluster.png" alt="k-mean cluster" width="640"/>
@@ -38,24 +38,24 @@ I only work a bit more on NLP/SVM.
 # [Project 2 - Creativity Assessment Automation](Creativity Assessment Automation.pdf)
 
 ## Overview
-This project is to help our client to evaluate people’s creativity level. Since our client doesn’t have a systematic method to do that, our goal is to develop an AI model that can base on image, and the text response from of that image from test subject to evaluate their creativity level.
+This project is to help our client to evaluate people’s creativity levels. Since our client doesn’t have a systematic method to do that, our goal is to develop an AI model that can base on an image, and the text response of that image from test subjects to evaluate their creativity level.
 
 <details>
   <summary>Click for more detail</summary>
   
   
 ## Task
-- Use GCP Vision to analysis images.
-- Use R, NLP to analysis image and text data and establish data features.
+- Use GCP Vision to analyze images and identify necessary information.
+- Use R, NLP to analyze images and text data for establishing data features to train prediction models.
 - Use Beayson Network to build DAG for understanding cause and effect and the probabilities of data features.
 - Build prediction model using Beayson Network.
 - Use Tableau and R markdown for reporting.
 
 ## Notes
-There are total 2 people with coding experience including me in this team, hence we handle most heavy coding task.
-The other coder handles research of neural network and provide some help for other teammates.
+There are only 2 people with coding experience including me in this team, hence we handle most of the heavy coding tasks.
+The other coder handles research of neural networks and provides some help for other teammates.
 I mainly develop API for image analysis and also decide features using Beayson network. 
-At the end my selection and decision of using Beauyson network brings a HD to the team. 
+In the end, I come up with various valuable features using Beayson network and create a useful prediction model which brings a HD to the team. 
 
 ## Preview
 <img src="images/bar.png" alt="creativity lvel" width="400"/>
