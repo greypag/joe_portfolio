@@ -8,14 +8,16 @@ To analyze Airbnb data from 2019 to 2020, investigate which factors affect the p
 
 ## Visual
 A simple visual only to demonstrate my PowerBI skills, not as fancy as in the report.
+Quick EDA of the AirBnb data.
 
+<a href="https://drive.google.com/file/d/1o4JyFWo128lpGd-4jVszbJQN6Owd8KI3/view?usp=sharing">AirBnb EDA</a>
 
 <br />
 <img src="images/powerBI1.png" alt="PowerBI" width="640"/>
 <img src="images/powerBI2.png" alt="PowerBI" width="640"/>
 <br />
 
-<a href="https://drive.google.com/file/d/1o4JyFWo128lpGd-4jVszbJQN6Owd8KI3/view?usp=sharing">AirBnb EDA</a>
+
 
 
 <details>
