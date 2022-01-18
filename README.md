@@ -6,11 +6,11 @@ Some work from Master of Data Science
 ## Overview
 To analyze Airbnb data from 2019 to 2020, investigate which factors affect the price and the booking schedule. Also, generating a prediction model to suggest what facility and which location can help boost up the price and booking inquiries.
 
-## Visual
+## Power BI Visual
 A simple visual only to demonstrate my PowerBI skills, not as fancy as in the report.
 Quick EDA of the AirBnb data.
 
-<a href="https://drive.google.com/file/d/1o4JyFWo128lpGd-4jVszbJQN6Owd8KI3/view?usp=sharing">AirBnb EDA</a>
+<a href="https://drive.google.com/file/d/1o4JyFWo128lpGd-4jVszbJQN6Owd8KI3/view?usp=sharing">PowerBI: AirBnb EDA</a>
 
 <br />
 <img src="images/powerBI1.png" alt="PowerBI" width="640"/>
