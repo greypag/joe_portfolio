@@ -9,7 +9,7 @@ To analyze Airbnb data from 2019 to 2020, investigate which factors affect the p
 
 <details>
   
-  <summary>**Click for more detail**</summary>
+  **<summary>Click for more detail</summary>**
 
 ## Task
 - Use R to do data cleaning and manipulation, clustering, and correlation test to isolate necessary feature.
