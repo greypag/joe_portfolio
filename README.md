@@ -63,6 +63,7 @@ Password: QQwe@123
 <img src="images/Glue3.png" alt="AWS" width="480"/>
 <img src="images/Glue4.png" alt="AWS" width="480"/>
 <img src="images/Glue5.png" alt="AWS" width="480"/>
+<img src="images/Glue6.png" alt="AWS" width="480"/>
 <br />
 <br /><br />
 
