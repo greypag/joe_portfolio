@@ -1,5 +1,5 @@
 # Joe Kwan Portfolio
-Some work from Master of Data Science 
+Some work from Master of Data Science and my leisure time.
 
 # [Project 1 - AirBnb Data Analysis](AirBnb Data Analysis Project.pdf)
 
@@ -37,13 +37,13 @@ I work a bit more on NLP/SVM.
 <br /><br />
 ## Data Engineering
 Using the same Airbnb dataset, applied a basic data pipeline using AWS glue/athena/quicksight. <br />
-Generated a simple similar visual as PowerBI dashboard below.<br />
+Generated a simple visual similar as PowerBI dashboard below.<br />
 This is to demonstrate my skills to work on cloud data ETL tools.<br />
 Didn't choose Redis/Snowflake because this data is in a relatively simple structure and small volume. 
 
 
 Pipeline flow:<br />
-S3(CSV) > Glue Crawler(Data/Column transformation) > S3(parquet) > [Glue Job <> Glue DataBrew](Data Preparation and Scheme update) > Athena > Quicksight
+S3(CSV) > Glue Crawler(Data/Column transformation) > S3(parquet) > Glue Job <> Glue DataBrew(Data Preparation and Scheme update) > Athena > Quicksight
 
 <br /><br />
 <a href="https://ap-southeast-1.quicksight.aws.amazon.com/sn/accounts/031268667119/dashboards/327300b3-61bb-48eb-b2b8-83ceb2dc4e79" target="_blank"> > Airbnb QuickSight Dashboard</a>
@@ -57,13 +57,13 @@ Email: byzjoe@gmail.com
 Password: QQwe@123
 
 <br /><br />
+<a href="images/Glue1.png" target="_blank"><img src="images/Glue1.png" alt="AWS" width="480"/></a>
+<a href="images/Glue2.png" target="_blank"><img src="images/Glue2.png" alt="AWS" width="480"/></a>
+<a href="images/Glue3.png" target="_blank"><img src="images/Glue3.png" alt="AWS" width="480"/></a>
+<a href="images/Glue4.png" target="_blank"><img src="images/Glue4.png" alt="AWS" width="480"/></a>
+<a href="images/Glue5.png" target="_blank"><img src="images/Glue5.png" alt="AWS" width="480"/></a>
+<a href="images/Glue6.png" target="_blank"><img src="images/Glue6.png" alt="AWS" width="480"/></a>
 
-<img src="images/Glue1.png" alt="AWS" width="480"/>
-<img src="images/Glue2.png" alt="AWS" width="480"/>
-<img src="images/Glue3.png" alt="AWS" width="480"/>
-<img src="images/Glue4.png" alt="AWS" width="480"/>
-<img src="images/Glue5.png" alt="AWS" width="480"/>
-<img src="images/Glue6.png" alt="AWS" width="480"/>
 <br />
 <br /><br />
 
