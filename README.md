@@ -6,21 +6,6 @@ Some work from Master of Data Science
 ## Overview
 To analyze Airbnb data from 2019 to 2020, investigate which factors affect the price and the booking schedule. Also, generating a prediction model to suggest what facility and which location can help boost up the price and booking inquiries.
 
-## Power BI Visual
-A simple visual only to demonstrate my PowerBI skills, not as fancy as in the report.
-Quick EDA of the AirBnb data.
-
-<a href="https://drive.google.com/file/d/1o4JyFWo128lpGd-4jVszbJQN6Owd8KI3/view?usp=sharing">PowerBI: AirBnb EDA</a>
-
-<br />
-<img src="images/powerBI1.png" alt="PowerBI" width="640"/>
-<img src="images/powerBI2.png" alt="PowerBI" width="640"/>
-<img src="images/powerBI3.png" alt="PowerBI" width="640"/>
-<img src="images/powerBI4.png" alt="PowerBI" width="640"/>
-<br />
-<br /><br />
-
-
 
 <details>
   
@@ -48,6 +33,60 @@ I work a bit more on NLP/SVM.
 <img src="images/svm3.png" alt="svm" width="680"/>
 
 </details>
+
+
+## Data Engineering
+Using the same Airbnb dataset, applied a basic data pipeline using AWS glue/athena/quicksight. 
+Generated a simple similar visual as PowerBI dashboard below.
+This is for demostrate my skills to work on cloud data management tools. Full analysis report above.
+
+Pipeline flow:
+S3(CSV) > Glue Crawler > S3(Data transformation and convert to parquet) > [Glue Job <> Glue DataBrew](Data Preparation and Scheme update) > Athena > Quicksight
+
+<br /><br />
+<a href="https://ap-southeast-1.quicksight.aws.amazon.com/sn/accounts/031268667119/dashboards/327300b3-61bb-48eb-b2b8-83ceb2dc4e79" target="_blank"> Airbnb QuickSight</a>
+<br /><br />
+***Below are the temporary Quicksiht account setup for viewing the dashboard.
+
+Quicksight Accout: airbnb-quicksight-demo
+Email: byzjoe@gmail.com
+Password: QQwe@123
+
+<br /><br />
+
+<img src="images/Glue1.png" alt="AWS" width="640"/>
+<img src="images/Glue2.png" alt="AWS" width="640"/>
+<img src="images/Glue3.png" alt="AWS" width="640"/>
+<img src="images/Glue4.png" alt="AWS" width="640"/>
+<img src="images/Glue5.png" alt="AWS" width="640"/>
+<br />
+<br /><br />
+
+
+## Power BI Visual
+A simple visual only to demonstrate my PowerBI skills, not as fancy as in the report.
+Quick EDA of the AirBnb data.
+
+<a href="https://drive.google.com/file/d/1o4JyFWo128lpGd-4jVszbJQN6Owd8KI3/view?usp=sharing" target="_blank"> > PowerBI: AirBnb EDA</a>
+
+<br />
+<img src="images/powerBI1.png" alt="PowerBI" width="640"/>
+<img src="images/powerBI2.png" alt="PowerBI" width="640"/>
+<img src="images/powerBI3.png" alt="PowerBI" width="640"/>
+<img src="images/powerBI4.png" alt="PowerBI" width="640"/>
+<br />
+<br /><br />
+
+
+
+
+
+
+
+
+
+
+
 
 
 
