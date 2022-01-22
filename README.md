@@ -16,6 +16,7 @@ Quick EDA of the AirBnb data.
 <img src="images/powerBI1.png" alt="PowerBI" width="640"/>
 <img src="images/powerBI2.png" alt="PowerBI" width="640"/>
 <img src="images/powerBI3.png" alt="PowerBI" width="640"/>
+<img src="images/powerBI4.png" alt="PowerBI" width="640"/>
 <br />
 <br /><br />
 
