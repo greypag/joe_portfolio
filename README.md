@@ -38,7 +38,7 @@ I work a bit more on NLP/SVM.
 ## Data Engineering
 Using the same Airbnb dataset, applied a basic data pipeline using AWS glue/athena/quicksight. <br />
 Generated a simple visual similar as PowerBI dashboard below.<br />
-This is to demonstrate my skills to work on cloud data ETL tools.<br />
+This is to demonstrate my skills of working on cloud data ETL tools.<br />
 Didn't choose Redis/Snowflake because this data is in a relatively simple structure and small volume. 
 
 
