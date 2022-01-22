@@ -38,17 +38,17 @@ I work a bit more on NLP/SVM.
 ## Data Engineering
 Using the same Airbnb dataset, applied a basic data pipeline using AWS glue/athena/quicksight. <br />
 Generated a simple similar visual as PowerBI dashboard below.<br />
-This is for demostrate my skills to work on cloud data ETL tools.<br />
-Didn't choose Redis/Snowflake because this data is in a relativly simple structure and small volumn. 
+This is to demonstrate my skills to work on cloud data ETL tools.<br />
+Didn't choose Redis/Snowflake because this data is in a relatively simple structure and small volume. 
 
 
 Pipeline flow:<br />
 S3(CSV) > Glue Crawler(Data/Column transformation) > S3(parquet) > [Glue Job <> Glue DataBrew](Data Preparation and Scheme update) > Athena > Quicksight
 
 <br /><br />
-<a href="https://ap-southeast-1.quicksight.aws.amazon.com/sn/accounts/031268667119/dashboards/327300b3-61bb-48eb-b2b8-83ceb2dc4e79" target="_blank"> Airbnb QuickSight</a>
+<a href="https://ap-southeast-1.quicksight.aws.amazon.com/sn/accounts/031268667119/dashboards/327300b3-61bb-48eb-b2b8-83ceb2dc4e79" target="_blank"> > Airbnb QuickSight Dashboard</a>
 <br /><br />
-***Below are the temporary Quicksiht account setup for viewing the dashboard.
+***Below are the temporary Quicksight account setup for viewing the dashboard.
 <br /><br />
 Quicksight Accout: airbnb-quicksight-demo
 <br />
@@ -58,11 +58,11 @@ Password: QQwe@123
 
 <br /><br />
 
-<img src="images/Glue1.png" alt="AWS" width="640"/>
-<img src="images/Glue2.png" alt="AWS" width="640"/>
-<img src="images/Glue3.png" alt="AWS" width="640"/>
-<img src="images/Glue4.png" alt="AWS" width="640"/>
-<img src="images/Glue5.png" alt="AWS" width="640"/>
+<img src="images/Glue1.png" alt="AWS" width="480"/>
+<img src="images/Glue2.png" alt="AWS" width="480"/>
+<img src="images/Glue3.png" alt="AWS" width="480"/>
+<img src="images/Glue4.png" alt="AWS" width="480"/>
+<img src="images/Glue5.png" alt="AWS" width="480"/>
 <br />
 <br /><br />
 
