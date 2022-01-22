@@ -36,9 +36,11 @@ I work a bit more on NLP/SVM.
 
 <br /><br />
 ## Data Engineering
-Using the same Airbnb dataset, applied a basic data pipeline using AWS glue/athena/quicksight. 
-Generated a simple similar visual as PowerBI dashboard below.
-This is for demostrate my skills to work on cloud data ETL tools.
+Using the same Airbnb dataset, applied a basic data pipeline using AWS glue/athena/quicksight. <br />
+Generated a simple similar visual as PowerBI dashboard below.<br />
+This is for demostrate my skills to work on cloud data ETL tools.<br />
+Didn't choose Redis/Snowflake because this data is in a relativly simple structure and small volumn. 
+
 
 Pipeline flow:<br />
 S3(CSV) > Glue Crawler(Data/Column transformation) > S3(parquet) > [Glue Job <> Glue DataBrew](Data Preparation and Scheme update) > Athena > Quicksight
@@ -47,7 +49,7 @@ S3(CSV) > Glue Crawler(Data/Column transformation) > S3(parquet) > [Glue Job <> 
 <a href="https://ap-southeast-1.quicksight.aws.amazon.com/sn/accounts/031268667119/dashboards/327300b3-61bb-48eb-b2b8-83ceb2dc4e79" target="_blank"> Airbnb QuickSight</a>
 <br /><br />
 ***Below are the temporary Quicksiht account setup for viewing the dashboard.
-<br />
+<br /><br />
 Quicksight Accout: airbnb-quicksight-demo
 <br />
 Email: byzjoe@gmail.com
