@@ -107,15 +107,15 @@ This project is to help our client to evaluate people’s creativity levels. Sin
 ## Task
 - Use GCP Vision to analyze images and identify necessary information.
 - Use R, NLP to analyze images and text data for establishing data features to train prediction models.
-- Use Beayson Network to build DAG for understanding cause and effect and the probabilities of data features.
-- Build prediction model using Beayson Network.
+- Use Bayesian Network to build DAG for understanding cause and effect and the probabilities of data features.
+- Build prediction model using Bayesian Network.
 - Use Tableau and R markdown for reporting.
 
 ## Notes
 There are only 2 people with coding experience including me in this team, hence we handle most of the heavy coding tasks.
 The other coder handles research of neural networks and provides some help for other teammates.
-I mainly develop API for image analysis and also decide features using Beayson network. 
-In the end, I come up with various valuable features using Beayson network and create a useful prediction model which brings a HD to the team. 
+I mainly develop API for image analysis and also decide features using Bayesian network. 
+In the end, I come up with various valuable features using Bayesian network and create a useful prediction model which brings a HD to the team. 
 
 ## Preview
 <img src="images/bar.png" alt="creativity lvel" width="400"/>
